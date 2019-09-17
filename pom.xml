@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.reproducer</groupId>
+	<artifactId>trigger-engine-parent</artifactId>
+	<packaging>pom</packaging>
+	<version>0.1-SNAPSHOT</version>
+	<name>trigger-engine-parent</name>
+
+	<properties>
+		<version.camel.bom>2.23.2.fuse-740011-redhat-00001</version.camel.bom>
+		<version.spring.boot.bom>2.1.3.Final-redhat-00001</version.spring.boot.bom>
+		<version.swagger>3.22.2</version.swagger>
+		<version.webjars.locator>0.36</version.webjars.locator>
+		<version.redshift.jdbc>1.2.10.1009</version.redshift.jdbc>
+		<version.amazonaws.sdk>1.11.592</version.amazonaws.sdk>
+		<version.mapstruct>1.3.0.Final</version.mapstruct>
+
+		<!-- Maven Build Tools -->
+		<version.failsafe>2.22.0</version.failsafe>
+		<version.maven.compiler>3.5.1</version.maven.compiler>
+
+		<!-- BDD -->
+		<info.cukes.cucumber.version>1.2.5</info.cukes.cucumber.version>
+
+		<!-- Upcoming RHDM 7.4.1 BOM -->
+		<version.rhdm.bom>7.4.1.GA-redhat-00001</version.rhdm.bom>
+
+		<!-- Trigger Common Core -->
+
+		<version.trigger.common>0.1-SNAPSHOT</version.trigger.common>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+
+	<dependencyManagement>
+
+
+		<dependencies>
+			<!-- RHOAR -->
+			<dependency>
+				<groupId>me.snowdrop</groupId>
+				<artifactId>spring-boot-bom</artifactId>
+				<version>${version.spring.boot.bom}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.camel</groupId>
+				<artifactId>camel-parent</artifactId>
+				<version>${version.camel.bom}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- RHDM 7.4.1 -->
+			<dependency>
+				<groupId>com.redhat.ba</groupId>
+				<artifactId>ba-platform-bom</artifactId>
+				<version>${version.rhdm.bom}</version>
+				<scope>import</scope>
+				<type>pom</type>
+			</dependency>
+
+
+
+			<!-- POJO Mapping lib -->
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct-jdk8</artifactId>
+				<version>${version.mapstruct}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<modules>
+		<module>trigger-engine-core</module>
+	</modules>
+
+
+	<build>
+		<extensions>
+			<extension>
+				<groupId>com.allogy.maven.wagon</groupId>
+				<artifactId>maven-s3-wagon</artifactId>
+				<version>1.1.0</version>
+			</extension>
+		</extensions>
+	</build>
+
+</project>

@@ -1,0 +1,27 @@
+camel:
+  springboot:
+    name: Trigger Engine
+  component:
+    servlet:
+      mapping:
+        context-path: /api/*
+  rest:
+    binding-mode: json
+
+    
+management:
+  endpoint:
+    health:
+      show-details: always
+    camelroutes:
+      enabled: true
+      read-only: true
+  endpoints:
+    web:
+      exposure:
+        include: info,health,camelroutes
+  info:
+    camel:
+      enabled: true
+      verbose: true
+

@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: local
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        temp:
+          use_jdbc_metadata_defaults: "false"
+  h2:
+    console:
+      enabled: "true"
+      
+server:
+  port: 8090
+trigger:
+  datasource:
+    jdbcUrl: jdbc:h2:~/reproducerb;DB_CLOSE_ON_EXIT=FALSE;MODE=PostgreSQL
+    username: sa
+    password: sa
+  hbm2ddl: update
+  dialect: org.hibernate.dialect.H2Dialect
